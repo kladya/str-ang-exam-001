@@ -1,0 +1,31 @@
+<div class="container mt-3">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" (keyup)="onChangePhrase($event)"
+            type="search" placeholder="Search" aria-label="Search">
+    </form>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 mt-4">
+            <table class="table table-striped">
+                <thead class="thead-dark" style="cursor: pointer">
+                    <tr>
+                        <th (click)="onColumnSelect('id')">#</th>
+                        <th (click)="onColumnSelect('name')">Name</th>
+                        <th (click)="onColumnSelect('superPower')">Superpower
+                        </th>
+                        <th (click)="onColumnSelect('address')">Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let hero of heroList | filter:phrase | sorter:sorterKey">
+                        <td>{{ hero.id }}</td>
+                        <td>{{ hero.name }}</td>
+                        <td>{{ hero.superPower }}</td>
+                        <td>{{ hero.address }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
